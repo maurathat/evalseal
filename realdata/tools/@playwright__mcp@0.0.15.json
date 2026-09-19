@@ -1,0 +1,177 @@
+{
+  "schema": 2,
+  "package": "@playwright/mcp",
+  "version": "0.0.15",
+  "tools": [
+    {
+      "name": "browser_close",
+      "description": "Close the page",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+    },
+    {
+      "name": "browser_wait",
+      "description": "Wait for a specified time in seconds",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+    },
+    {
+      "name": "browser_resize",
+      "description": "Resize the browser window",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+    },
+    {
+      "name": "browser_console_messages",
+      "description": "Returns all console messages",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+    },
+    {
+      "name": "browser_handle_dialog",
+      "description": "Handle a dialog",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+    },
+    {
+      "name": "browser_file_upload",
+      "description": "Upload one or multiple files",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+    },
+    {
+      "name": "browser_install",
+      "description": "Install the browser specified in the config. Call this if you get an error about the browser not being installed.",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+    },
+    {
+      "name": "browser_press_key",
+      "description": "Press a key on the keyboard",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+    },
+    {
+      "name": "browser_navigate",
+      "description": "Navigate to a URL",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+    },
+    {
+      "name": "browser_navigate_back",
+      "description": "Go back to the previous page",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+    },
+    {
+      "name": "browser_navigate_forward",
+      "description": "Go forward to the next page",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+    },
+    {
+      "name": "browser_network_requests",
+      "description": "Returns all network requests since loading the page",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+    },
+    {
+      "name": "browser_pdf_save",
+      "description": "Save page as PDF",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+    },
+    {
+      "name": "browser_snapshot",
+      "description": "Capture accessibility snapshot of the current page, this is better than screenshot",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+    },
+    {
+      "name": "browser_click",
+      "description": "Perform click on a web page",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+    },
+    {
+      "name": "browser_drag",
+      "description": "Perform drag and drop between two elements",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+    },
+    {
+      "name": "browser_hover",
+      "description": "Hover over element on page",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+    },
+    {
+      "name": "browser_type",
+      "description": "Type text into editable element",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+    },
+    {
+      "name": "browser_select_option",
+      "description": "Select an option in a dropdown",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+    },
+    {
+      "name": "browser_take_screenshot",
+      "description": "Take a screenshot of the current page. You can't perform actions based on the screenshot, use browser_snapshot for actions.",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+    },
+    {
+      "name": "browser_tab_list",
+      "description": "List browser tabs",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+    },
+    {
+      "name": "browser_tab_new",
+      "description": "Open a new tab",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+    },
+    {
+      "name": "browser_tab_select",
+      "description": "Select a tab by index",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+    },
+    {
+      "name": "browser_tab_close",
+      "description": "Close a tab",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+    }
+  ],
+  "error": null,
+  "raw": "{\"result\":{\"tools\":[{\"name\":\"browser_close\",\"description\":\"Close the page\",\"inputSchema\":{\"$schema\":\"http://json-schema.org/draft-07/schema#\"}},{\"name\":\"browser_wait\",\"description\":\"Wait for a specified time in seconds\",\"inputSchema\":{\"$schema\":\"http://json-schema.org/draft-07/schema#\"}},{\"name\":\"browser_resize\",\"description\":\"Resize the browser window\",\"inputSchema\":{\"$schema\":\"http://json-schema.org/draft-07/schema#\"}},{\"name\":\"browser_console_messages\",\"description\":\"Returns all console messages\",\"inputSchema\":{\"$schema\":\"http://json-schema.org/draft-07/schema#\"}},{\"name\":\"browser_handle_dialog\",\"description\":\"Handle a dialog\",\"inputSchema\":{\"$schema\":\"http://json-schema.org/draft-07/schema#\"}},{\"name\":\"browser_file_upload\",\"description\":\"Upload one or multiple files\",\"inputSchema\":{\"$schema\":\"http://json-schema.org/draft-07/schema#\"}},{\"name\":\"browser_install\",\"description\":\"Install the browser specified in the config. Call this if you get an error about the browser not being installed.\",\"inputSchema\":{\"$schema\":\"http://json-schema.org/draft-07/schema#\"}},{\"name\":\"browser_press_key\",\"description\":\"Press a key on the keyboard\",\"inputSchema\":{\"$schema\":\"http://json-schema.org/draft-07/schema#\"}},{\"name\":\"browser_navigate\",\"description\":\"Navigate to a URL\",\"inputSchema\":{\"$schema\":\"http://json-schema.org/draft-07/schema#\"}},{\"name\":\"browser_navigate_back\",\"description\":\"Go back to the previous page\",\"inputSchema\":{\"$schema\":\"http://json-schema.org/draft-07/schema#\"}},{\"name\":\"browser_navigate_forward\",\"description\":\"Go forward to the next page\",\"inputSchema\":{\"$schema\":\"http://json-schema.org/draft-07/schema#\"}},{\"name\":\"browser_network_requests\",\"description\":\"Returns all network requests since loading the page\",\"inputSchema\":{\"$schema\":\"http://json-schema.org/draft-07/schema#\"}},{\"name\":\"browser_pdf_save\",\"description\":\"Save page as PDF\",\"inputSchema\":{\"$schema\":\"http://json-schema.org/draft-07/schema#\"}},{\"name\":\"browser_snapshot\",\"description\":\"Capture accessibility snapshot of the current page, this is better than screenshot\",\"inputSchema\":{\"$schema\":\"http://json-schema.org/draft-07/schema#\"}},{\"name\":\"browser_click\",\"description\":\"Perform click on a web page\",\"inputSchema\":{\"$schema\":\"http://json-schema.org/draft-07/schema#\"}},{\"name\":\"browser_drag\",\"description\":\"Perform drag and drop between two elements\",\"inputSchema\":{\"$schema\":\"http://json-schema.org/draft-07/schema#\"}},{\"name\":\"browser_hover\",\"description\":\"Hover over element on page\",\"inputSchema\":{\"$schema\":\"http://json-schema.org/draft-07/schema#\"}},{\"name\":\"browser_type\",\"description\":\"Type text into editable element\",\"inputSchema\":{\"$schema\":\"http://json-schema.org/draft-07/schema#\"}},{\"name\":\"browser_select_option\",\"description\":\"Select an option in a dropdown\",\"inputSchema\":{\"$schema\":\"http://json-schema.org/draft-07/schema#\"}},{\"name\":\"browser_take_screenshot\",\"description\":\"Take a screenshot of the current page. You can't perform actions based on the screenshot, use browser_snapshot for actions.\",\"inputSchema\":{\"$schema\":\"http://json-schema.org/draft-07/schema#\"}},{\"name\":\"browser_tab_list\",\"description\":\"List browser tabs\",\"inputSchema\":{\"$schema\":\"http://json-schema.org/draft-07/schema#\"}},{\"name\":\"browser_tab_new\",\"description\":\"Open a new tab\",\"inputSchema\":{\"$schema\":\"http://json-schema.org/draft-07/schema#\"}},{\"name\":\"browser_tab_select\",\"description\":\"Select a tab by index\",\"inputSchema\":{\"$schema\":\"http://json-schema.org/draft-07/schema#\"}},{\"name\":\"browser_tab_close\",\"description\":\"Close a tab\",\"inputSchema\":{\"$schema\":\"http://json-schema.org/draft-07/schema#\"}}]},\"jsonrpc\":\"2.0\",\"id\":2}"
+}

@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+out/
+.venv/
+realdata/harvest.log
+.pytest_cache/
+integration/out/

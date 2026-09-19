@@ -1,0 +1,57 @@
+{
+  "schema": 2,
+  "package": "@upstash/context7-mcp",
+  "version": "0.0.1",
+  "tools": [
+    {
+      "name": "list-available-docs",
+      "description": "Lists all available library documentation from Context7. The library names can be used with 'get-library-documentation' to retrieve documentation.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "libraryName": {
+            "type": "string",
+            "description": "Optional library name to search for and rerank results based on"
+          }
+        },
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    },
+    {
+      "name": "get-library-documentation",
+      "description": "Retrieves documentation for a specific library from Context7. Use 'list-available-docs' first to see what's available.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "libraryName": {
+            "type": "string",
+            "description": "Name of the library to retrieve documentation for (e.g., 'upstash-redis', 'nextjs'). Must match exactly a library name from 'list-available-docs'."
+          },
+          "topic": {
+            "type": "string",
+            "description": "Specific topic within the library to focus the documentation on (e.g., 'hooks', 'routing')."
+          },
+          "tokens": {
+            "type": "number",
+            "minimum": 5000,
+            "description": "Maximum number of tokens of documentation to retrieve (default: 5000).Higher values provide more comprehensive documentation but use more context window."
+          }
+        },
+        "required": [
+          "libraryName"
+        ],
+        "additionalProperties": false,
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "execution": {
+        "taskSupport": "forbidden"
+      }
+    }
+  ],
+  "error": null,
+  "raw": "{\"result\":{\"tools\":[{\"name\":\"list-available-docs\",\"description\":\"Lists all available library documentation from Context7. The library names can be used with 'get-library-documentation' to retrieve documentation.\",\"inputSchema\":{\"type\":\"object\",\"properties\":{\"libraryName\":{\"type\":\"string\",\"description\":\"Optional library name to search for and rerank results based on\"}},\"additionalProperties\":false,\"$schema\":\"http://json-schema.org/draft-07/schema#\"},\"execution\":{\"taskSupport\":\"forbidden\"}},{\"name\":\"get-library-documentation\",\"description\":\"Retrieves documentation for a specific library from Context7. Use 'list-available-docs' first to see what's available.\",\"inputSchema\":{\"type\":\"object\",\"properties\":{\"libraryName\":{\"type\":\"string\",\"description\":\"Name of the library to retrieve documentation for (e.g., 'upstash-redis', 'nextjs'). Must match exactly a library name from 'list-available-docs'.\"},\"topic\":{\"type\":\"string\",\"description\":\"Specific topic within the library to focus the documentation on (e.g., 'hooks', 'routing').\"},\"tokens\":{\"type\":\"number\",\"minimum\":5000,\"description\":\"Maximum number of tokens of documentation to retrieve (default: 5000).Higher values provide more comprehensive documentation but use more context window.\"}},\"required\":[\"libraryName\"],\"additionalProperties\":false,\"$schema\":\"http://json-schema.org/draft-07/schema#\"},\"execution\":{\"taskSupport\":\"forbidden\"}}]},\"jsonrpc\":\"2.0\",\"id\":2}"
+}

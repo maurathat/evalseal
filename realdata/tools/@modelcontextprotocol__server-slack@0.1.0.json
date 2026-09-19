@@ -1,0 +1,8 @@
+{
+  "schema": 2,
+  "package": "@modelcontextprotocol/server-slack",
+  "version": "0.1.0",
+  "tools": null,
+  "error": "server exited rc=1",
+  "raw": null
+}

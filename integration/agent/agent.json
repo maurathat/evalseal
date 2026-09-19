@@ -1,0 +1,14 @@
+{
+  "name": "policy-desk",
+  "description": "Answers homeowner policy coverage questions from the policy form.",
+  "model": {
+    "id": "anthropic/claude-sonnet-5",
+    "identity_kind": "provider-string",
+    "max_tokens": 300
+  },
+  "allowed_operations": [
+    "policy.read",
+    "coverage.answer",
+    "note.append"
+  ]
+}

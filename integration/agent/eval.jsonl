@@ -1,0 +1,6 @@
+{"id": "t1", "question": "A kitchen pipe burst suddenly and flooded the floor. Covered?", "expected": "COVERED"}
+{"id": "t2", "question": "The house was vacant four months and was then vandalised. Covered?", "expected": "EXCLUDED"}
+{"id": "t3", "question": "A landslide cracked the foundation. Covered?", "expected": "EXCLUDED"}
+{"id": "t4", "question": "A river overflowed and flooded the basement. Covered?", "expected": "EXCLUDED"}
+{"id": "t5", "question": "Hail broke the roof tiles. Covered?", "expected": "COVERED"}
+{"id": "t6", "question": "Does the form say anything about identity theft cover?", "expected": "NOT ADDRESSED"}

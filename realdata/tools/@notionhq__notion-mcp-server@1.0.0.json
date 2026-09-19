@@ -1,0 +1,8 @@
+{
+  "schema": 2,
+  "package": "@notionhq/notion-mcp-server",
+  "version": "1.0.0",
+  "tools": null,
+  "error": "server exited rc=0",
+  "raw": null
+}

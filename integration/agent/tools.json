@@ -1,0 +1,19 @@
+{
+  "tools": [
+    {
+      "name": "read_policy_form",
+      "description": "Return the text of the homeowner policy form for a policy number.",
+      "inputSchema": {"type": "object", "properties": {"policy_number": {"type": "string"}}, "required": ["policy_number"]}
+    },
+    {
+      "name": "classify_coverage",
+      "description": "Record a coverage determination of COVERED, EXCLUDED or NOT ADDRESSED for a claim.",
+      "inputSchema": {"type": "object", "properties": {"claim_number": {"type": "string"}, "decision": {"type": "string", "enum": ["COVERED", "EXCLUDED", "NOT ADDRESSED"]}}, "required": ["claim_number", "decision"]}
+    },
+    {
+      "name": "append_note",
+      "description": "Append an internal note to the claim file. Notes are not visible to the policyholder.",
+      "inputSchema": {"type": "object", "properties": {"claim_number": {"type": "string"}, "note": {"type": "string"}}, "required": ["claim_number", "note"]}
+    }
+  ]
+}

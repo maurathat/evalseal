@@ -1,0 +1,334 @@
+{
+  "schema": 2,
+  "package": "@playwright/mcp",
+  "version": "0.0.27",
+  "tools": [
+    {
+      "name": "browser_close",
+      "description": "Close the page",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "title": "Close browser",
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "browser_resize",
+      "description": "Resize the browser window",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "title": "Resize browser window",
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "browser_console_messages",
+      "description": "Returns all console messages",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "title": "Get console messages",
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "browser_handle_dialog",
+      "description": "Handle a dialog",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "title": "Handle a dialog",
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "browser_file_upload",
+      "description": "Upload one or multiple files",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "title": "Upload files",
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "browser_install",
+      "description": "Install the browser specified in the config. Call this if you get an error about the browser not being installed.",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "title": "Install the browser specified in the config",
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "browser_press_key",
+      "description": "Press a key on the keyboard",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "title": "Press a key",
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "browser_navigate",
+      "description": "Navigate to a URL",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "title": "Navigate to a URL",
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "browser_navigate_back",
+      "description": "Go back to the previous page",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "title": "Go back",
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "browser_navigate_forward",
+      "description": "Go forward to the next page",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "title": "Go forward",
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "browser_network_requests",
+      "description": "Returns all network requests since loading the page",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "title": "List network requests",
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "browser_pdf_save",
+      "description": "Save page as PDF",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "title": "Save as PDF",
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "browser_take_screenshot",
+      "description": "Take a screenshot of the current page. You can't perform actions based on the screenshot, use browser_snapshot for actions.",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "title": "Take a screenshot",
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "browser_snapshot",
+      "description": "Capture accessibility snapshot of the current page, this is better than screenshot",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "title": "Page snapshot",
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "browser_click",
+      "description": "Perform click on a web page",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "title": "Click",
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "browser_drag",
+      "description": "Perform drag and drop between two elements",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "title": "Drag mouse",
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "browser_hover",
+      "description": "Hover over element on page",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "title": "Hover mouse",
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "browser_type",
+      "description": "Type text into editable element",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "title": "Type text",
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "browser_select_option",
+      "description": "Select an option in a dropdown",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "title": "Select option",
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "browser_tab_list",
+      "description": "List browser tabs",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "title": "List tabs",
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "browser_tab_new",
+      "description": "Open a new tab",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "title": "Open a new tab",
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "browser_tab_select",
+      "description": "Select a tab by index",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "title": "Select a tab",
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "browser_tab_close",
+      "description": "Close a tab",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "title": "Close a tab",
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "browser_generate_playwright_test",
+      "description": "Generate a Playwright test for given scenario",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "title": "Generate a Playwright test",
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "browser_wait_for",
+      "description": "Wait for text to appear or disappear or a specified time to pass",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      },
+      "annotations": {
+        "title": "Wait for",
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "openWorldHint": true
+      }
+    }
+  ],
+  "error": null,
+  "raw": "{\"result\":{\"tools\":[{\"name\":\"browser_close\",\"description\":\"Close the page\",\"inputSchema\":{\"$schema\":\"http://json-schema.org/draft-07/schema#\"},\"annotations\":{\"title\":\"Close browser\",\"readOnlyHint\":true,\"destructiveHint\":false,\"openWorldHint\":true}},{\"name\":\"browser_resize\",\"description\":\"Resize the browser window\",\"inputSchema\":{\"$schema\":\"http://json-schema.org/draft-07/schema#\"},\"annotations\":{\"title\":\"Resize browser window\",\"readOnlyHint\":true,\"destructiveHint\":false,\"openWorldHint\":true}},{\"name\":\"browser_console_messages\",\"description\":\"Returns all console messages\",\"inputSchema\":{\"$schema\":\"http://json-schema.org/draft-07/schema#\"},\"annotations\":{\"title\":\"Get console messages\",\"readOnlyHint\":true,\"destructiveHint\":false,\"openWorldHint\":true}},{\"name\":\"browser_handle_dialog\",\"description\":\"Handle a dialog\",\"inputSchema\":{\"$schema\":\"http://json-schema.org/draft-07/schema#\"},\"annotations\":{\"title\":\"Handle a dialog\",\"readOnlyHint\":false,\"destructiveHint\":true,\"openWorldHint\":true}},{\"name\":\"browser_file_upload\",\"description\":\"Upload one or multiple files\",\"inputSchema\":{\"$schema\":\"http://json-schema.org/draft-07/schema#\"},\"annotations\":{\"title\":\"Upload files\",\"readOnlyHint\":false,\"destructiveHint\":true,\"openWorldHint\":true}},{\"name\":\"browser_install\",\"description\":\"Install the browser specified in the config. Call this if you get an error about the browser not being installed.\",\"inputSchema\":{\"$schema\":\"http://json-schema.org/draft-07/schema#\"},\"annotations\":{\"title\":\"Install the browser specified in the config\",\"readOnlyHint\":false,\"destructiveHint\":true,\"openWorldHint\":true}},{\"name\":\"browser_press_key\",\"description\":\"Press a key on the keyboard\",\"inputSchema\":{\"$schema\":\"http://json-schema.org/draft-07/schema#\"},\"annotations\":{\"title\":\"Press a key\",\"readOnlyHint\":false,\"destructiveHint\":true,\"openWorldHint\":true}},{\"name\":\"browser_navigate\",\"description\":\"Navigate to a URL\",\"inputSchema\":{\"$schema\":\"http://json-schema.org/draft-07/schema#\"},\"annotations\":{\"title\":\"Navigate to a URL\",\"readOnlyHint\":false,\"destructiveHint\":true,\"openWorldHint\":true}},{\"name\":\"browser_navigate_back\",\"description\":\"Go back to the previous page\",\"inputSchema\":{\"$schema\":\"http://json-schema.org/draft-07/schema#\"},\"annotations\":{\"title\":\"Go back\",\"readOnlyHint\":true,\"destructiveHint\":false,\"openWorldHint\":true}},{\"name\":\"browser_navigate_forward\",\"description\":\"Go forward to the next page\",\"inputSchema\":{\"$schema\":\"http://json-schema.org/draft-07/schema#\"},\"annotations\":{\"title\":\"Go forward\",\"readOnlyHint\":true,\"destructiveHint\":false,\"openWorldHint\":true}},{\"name\":\"browser_network_requests\",\"description\":\"Returns all network requests since loading the page\",\"inputSchema\":{\"$schema\":\"http://json-schema.org/draft-07/schema#\"},\"annotations\":{\"title\":\"List network requests\",\"readOnlyHint\":true,\"destructiveHint\":false,\"openWorldHint\":true}},{\"name\":\"browser_pdf_save\",\"description\":\"Save page as PDF\",\"inputSchema\":{\"$schema\":\"http://json-schema.org/draft-07/schema#\"},\"annotations\":{\"title\":\"Save as PDF\",\"readOnlyHint\":true,\"destructiveHint\":false,\"openWorldHint\":true}},{\"name\":\"browser_take_screenshot\",\"description\":\"Take a screenshot of the current page. You can't perform actions based on the screenshot, use browser_snapshot for actions.\",\"inputSchema\":{\"$schema\":\"http://json-schema.org/draft-07/schema#\"},\"annotations\":{\"title\":\"Take a screenshot\",\"readOnlyHint\":true,\"destructiveHint\":false,\"openWorldHint\":true}},{\"name\":\"browser_snapshot\",\"description\":\"Capture accessibility snapshot of the current page, this is better than screenshot\",\"inputSchema\":{\"$schema\":\"http://json-schema.org/draft-07/schema#\"},\"annotations\":{\"title\":\"Page snapshot\",\"readOnlyHint\":true,\"destructiveHint\":false,\"openWorldHint\":true}},{\"name\":\"browser_click\",\"description\":\"Perform click on a web page\",\"inputSchema\":{\"$schema\":\"http://json-schema.org/draft-07/schema#\"},\"annotations\":{\"title\":\"Click\",\"readOnlyHint\":false,\"destructiveHint\":true,\"openWorldHint\":true}},{\"name\":\"browser_drag\",\"description\":\"Perform drag and drop between two elements\",\"inputSchema\":{\"$schema\":\"http://json-schema.org/draft-07/schema#\"},\"annotations\":{\"title\":\"Drag mouse\",\"readOnlyHint\":false,\"destructiveHint\":true,\"openWorldHint\":true}},{\"name\":\"browser_hover\",\"description\":\"Hover over element on page\",\"inputSchema\":{\"$schema\":\"http://json-schema.org/draft-07/schema#\"},\"annotations\":{\"title\":\"Hover mouse\",\"readOnlyHint\":true,\"destructiveHint\":false,\"openWorldHint\":true}},{\"name\":\"browser_type\",\"description\":\"Type text into editable element\",\"inputSchema\":{\"$schema\":\"http://json-schema.org/draft-07/schema#\"},\"annotations\":{\"title\":\"Type text\",\"readOnlyHint\":false,\"destructiveHint\":true,\"openWorldHint\":true}},{\"name\":\"browser_select_option\",\"description\":\"Select an option in a dropdown\",\"inputSchema\":{\"$schema\":\"http://json-schema.org/draft-07/schema#\"},\"annotations\":{\"title\":\"Select option\",\"readOnlyHint\":false,\"destructiveHint\":true,\"openWorldHint\":true}},{\"name\":\"browser_tab_list\",\"description\":\"List browser tabs\",\"inputSchema\":{\"$schema\":\"http://json-schema.org/draft-07/schema#\"},\"annotations\":{\"title\":\"List tabs\",\"readOnlyHint\":true,\"destructiveHint\":false,\"openWorldHint\":true}},{\"name\":\"browser_tab_new\",\"description\":\"Open a new tab\",\"inputSchema\":{\"$schema\":\"http://json-schema.org/draft-07/schema#\"},\"annotations\":{\"title\":\"Open a new tab\",\"readOnlyHint\":true,\"destructiveHint\":false,\"openWorldHint\":true}},{\"name\":\"browser_tab_select\",\"description\":\"Select a tab by index\",\"inputSchema\":{\"$schema\":\"http://json-schema.org/draft-07/schema#\"},\"annotations\":{\"title\":\"Select a tab\",\"readOnlyHint\":true,\"destructiveHint\":false,\"openWorldHint\":true}},{\"name\":\"browser_tab_close\",\"description\":\"Close a tab\",\"inputSchema\":{\"$schema\":\"http://json-schema.org/draft-07/schema#\"},\"annotations\":{\"title\":\"Close a tab\",\"readOnlyHint\":false,\"destructiveHint\":true,\"openWorldHint\":true}},{\"name\":\"browser_generate_playwright_test\",\"description\":\"Generate a Playwright test for given scenario\",\"inputSchema\":{\"$schema\":\"http://json-schema.org/draft-07/schema#\"},\"annotations\":{\"title\":\"Generate a Playwright test\",\"readOnlyHint\":true,\"destructiveHint\":false,\"openWorldHint\":true}},{\"name\":\"browser_wait_for\",\"description\":\"Wait for text to appear or disappear or a specified time to pass\",\"inputSchema\":{\"$schema\":\"http://json-schema.org/draft-07/schema#\"},\"annotations\":{\"title\":\"Wait for\",\"readOnlyHint\":true,\"destructiveHint\":false,\"openWorldHint\":true}}]},\"jsonrpc\":\"2.0\",\"id\":2}"
+}

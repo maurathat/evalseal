@@ -1,0 +1,66 @@
+{
+  "tools": [
+    {
+      "name": "get_claim",
+      "description": "Retrieve a claim record by its claim number.\nReturns the claimant name as recorded, which may contain non-ASCII characters.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "claim_number": {
+            "type": "string",
+            "description": "Claim number, format CLM-000000.",
+            "examples": ["CLM-100200", "CLM-100207"]
+          },
+          "claimant_hint": {
+            "type": "string",
+            "description": "Optional claimant name to disambiguate, e.g. \"José Álvarez\" or \"Zoë Müller\".",
+            "examples": ["José Álvarez", "Zoë Müller", "Tomáš Novák"]
+          }
+        },
+        "required": ["claim_number"],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "lookup_policy",
+      "description": "Retrieve the policy terms that apply to a claim, including coverage limits and exclusions.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "policy_id": { "type": "string" },
+          "as_of": { "type": "string", "description": "ISO date. Defaults to today." }
+        },
+        "required": ["policy_id"],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "classify_claim",
+      "description": "Record a routing decision for a claim. Use exactly one of: approve, deny, escalate.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "claim_number": { "type": "string" },
+          "decision": { "type": "string", "enum": ["approve", "deny", "escalate"] },
+          "rationale": { "type": "string", "description": "Cite the policy clause relied on." },
+          "max_payout_cents": { "type": "integer", "minimum": 0 }
+        },
+        "required": ["claim_number", "decision", "rationale"],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "search_precedent",
+      "description": "Search previously decided claims for comparable fact patterns.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "query": { "type": "string" },
+          "limit": { "type": "integer", "minimum": 1, "maximum": 25 }
+        },
+        "required": ["query"],
+        "additionalProperties": false
+      }
+    }
+  ]
+}

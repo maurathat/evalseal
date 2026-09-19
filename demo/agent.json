@@ -1,0 +1,15 @@
+{
+  "name": "claims-review-agent",
+  "description": "Reviews inbound insurance claims against policy rules and routes them.",
+  "model": {
+    "id": "anthropic/claude-sonnet-4-5/20250929",
+    "identity_kind": "provider-string",
+    "note": "Provider-supplied identifier. EvalSeal binds this string; it does not canonicalize weights, adapters, quantizations or tokenizers."
+  },
+  "allowed_operations": [
+    "claim.read",
+    "policy.read",
+    "classification.write",
+    "note.append"
+  ]
+}
