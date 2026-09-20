@@ -1,5 +1,7 @@
 # EvalSeal
 
+**[Field card and 3-minute demo &rarr; maurathat.github.io/evalseal](https://maurathat.github.io/evalseal/)**
+
 **Did you deploy the agent you evaluated?**
 
 An enterprise evaluates an agent, approves it, and deploys it. Then the system
