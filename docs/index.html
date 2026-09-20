@@ -1,0 +1,942 @@
+<title>EvalSeal Field Card</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+  :root {
+    --paper:        #F4F6F8;
+    --surface:      #FFFFFF;
+    --surface-sunk: #EBEEF2;
+    --ink:          #15191F;
+    --ink-2:        #3C4550;
+    --muted:        #616C79;
+    --rule:         #CFD6DE;
+    --rule-soft:    #E2E7ED;
+    --accent:       #14605F;
+    --accent-soft:  #DCEBEA;
+    --pass:         #2C6338;
+    --pass-soft:    #DFEBE0;
+    --block:        #972E23;
+    --block-soft:   #F3DFDC;
+    --hold:         #7E520C;
+    --hold-soft:    #F2E7CF;
+
+    --sans: "IBM Plex Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+    --cond: "IBM Plex Sans Condensed", "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper:        #0E1217;
+      --surface:      #161B22;
+      --surface-sunk: #1D242D;
+      --ink:          #E7ECF1;
+      --ink-2:        #C3CCD6;
+      --muted:        #8C99A7;
+      --rule:         #2B343F;
+      --rule-soft:    #222A34;
+      --accent:       #5BC8C1;
+      --accent-soft:  #16302F;
+      --pass:         #79C289;
+      --pass-soft:    #16281A;
+      --block:        #E58274;
+      --block-soft:   #2E1A17;
+      --hold:         #DFAC4E;
+      --hold-soft:    #2C2211;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper:        #0E1217;
+    --surface:      #161B22;
+    --surface-sunk: #1D242D;
+    --ink:          #E7ECF1;
+    --ink-2:        #C3CCD6;
+    --muted:        #8C99A7;
+    --rule:         #2B343F;
+    --rule-soft:    #222A34;
+    --accent:       #5BC8C1;
+    --accent-soft:  #16302F;
+    --pass:         #79C289;
+    --pass-soft:    #16281A;
+    --block:        #E58274;
+    --block-soft:   #2E1A17;
+    --hold:         #DFAC4E;
+    --hold-soft:    #2C2211;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .sheet {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding-inline: 20px;
+    padding-block: 34px 56px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  /* ---------- masthead ---------- */
+
+  .masthead { display: flex; flex-direction: column; gap: 14px; }
+
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    letter-spacing: .13em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 14px;
+  }
+  .eyebrow b { color: var(--accent); font-weight: 600; }
+
+  h1 {
+    font-family: var(--cond);
+    font-weight: 700;
+    font-size: clamp(2.6rem, 7vw, 4.1rem);
+    line-height: .95;
+    letter-spacing: -.015em;
+    margin: 0;
+    text-wrap: balance;
+  }
+  h1 .sub {
+    display: block;
+    font-size: clamp(1rem, 2.4vw, 1.32rem);
+    font-weight: 500;
+    line-height: 1.32;
+    letter-spacing: 0;
+    color: var(--ink-2);
+    margin-top: 12px;
+    max-width: 62ch;
+  }
+
+  .thesis {
+    border-left: 3px solid var(--accent);
+    padding: 2px 0 2px 16px;
+    font-family: var(--cond);
+    font-size: clamp(1.18rem, 2.8vw, 1.6rem);
+    font-weight: 600;
+    line-height: 1.24;
+    max-width: 44ch;
+    text-wrap: balance;
+  }
+
+  .byline {
+    font-size: 13.5px;
+    color: var(--muted);
+    border-top: 1px solid var(--rule);
+    padding-top: 12px;
+  }
+  .byline strong { color: var(--ink-2); font-weight: 600; }
+
+  /* ---------- claim ladder ---------- */
+
+  .ladder-wrap { display: flex; flex-direction: column; gap: 10px; }
+
+  .ladder {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3px;
+  }
+  .rung {
+    padding: 13px 14px 15px;
+    background: var(--surface);
+    border-top: 4px solid var(--accent);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    min-width: 0;
+  }
+  .rung.held { border-top-color: var(--pass); background: var(--pass-soft); }
+  .rung.stop {
+    border-top-color: var(--block);
+    background: repeating-linear-gradient(
+      135deg, var(--block-soft) 0 9px, transparent 9px 18px);
+  }
+  .rung-k {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .1em;
+    color: var(--muted);
+  }
+  .rung-n {
+    font-family: var(--cond);
+    font-weight: 700;
+    font-size: clamp(.95rem, 2vw, 1.22rem);
+    letter-spacing: .01em;
+  }
+  .rung.stop .rung-n { color: var(--block); }
+  .rung-d { font-size: 12.5px; line-height: 1.35; color: var(--ink-2); }
+  .ladder-note {
+    font-size: 13px;
+    color: var(--muted);
+    max-width: 88ch;
+  }
+  .ladder-note code { font-family: var(--mono); font-size: 12px; color: var(--ink-2); }
+
+  /* ---------- panels ---------- */
+
+  .cols {
+    display: grid;
+    grid-template-columns: 1.14fr .86fr;
+    gap: 22px;
+    align-items: start;
+  }
+  .stack { display: flex; flex-direction: column; gap: 22px; min-width: 0; }
+
+  .panel {
+    background: var(--surface);
+    border: 1px solid var(--rule-soft);
+    padding: 18px 18px 20px;
+    min-width: 0;
+  }
+  .panel > h2 {
+    font-family: var(--cond);
+    font-weight: 700;
+    font-size: 1.12rem;
+    letter-spacing: .005em;
+    margin: 0 0 3px;
+  }
+  .panel > .lede {
+    font-size: 13px;
+    color: var(--muted);
+    margin: 0 0 14px;
+    max-width: 68ch;
+  }
+  .panel > .foot {
+    font-size: 12.5px;
+    color: var(--muted);
+    margin: 13px 0 0;
+    padding-top: 11px;
+    border-top: 1px solid var(--rule-soft);
+    max-width: 72ch;
+  }
+  .panel > .foot strong { color: var(--ink-2); font-weight: 600; }
+
+  /* ---------- tables ---------- */
+
+  .scroll { overflow-x: auto; margin-inline: -4px; padding-inline: 4px; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    font-variant-numeric: tabular-nums;
+  }
+  th {
+    text-align: left;
+    font-family: var(--mono);
+    font-weight: 500;
+    font-size: 10.5px;
+    letter-spacing: .09em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 0 10px 7px 0;
+    border-bottom: 1px solid var(--rule);
+    white-space: nowrap;
+  }
+  td {
+    padding: 8px 10px 8px 0;
+    border-bottom: 1px solid var(--rule-soft);
+    vertical-align: top;
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  td.n {
+    font-family: var(--mono);
+    color: var(--muted);
+    width: 1.6em;
+    font-size: 12px;
+  }
+  td.num { font-family: var(--mono); text-align: right; white-space: nowrap; }
+  td.act { color: var(--muted); font-size: 12.5px; }
+  .why { display: block; color: var(--muted); font-size: 12px; margin-top: 2px; }
+
+  .chip {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: .05em;
+    padding: 2px 6px;
+    white-space: nowrap;
+    border: 1px solid;
+  }
+  .chip.keep  { color: var(--pass);  border-color: var(--pass);  background: var(--pass-soft); }
+  .chip.lose  { color: var(--block); border-color: var(--block); background: var(--block-soft); }
+  .chip.none  { color: var(--hold);  border-color: var(--hold);  background: var(--hold-soft); }
+  .best { background: var(--accent-soft); }
+  .best td { font-weight: 600; }
+  mark {
+    background: var(--hold-soft);
+    color: var(--hold);
+    font-weight: 600;
+    padding: 0 3px;
+  }
+
+  /* ---------- figures ---------- */
+
+  .figs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(122px, 1fr));
+    gap: 1px;
+    background: var(--rule-soft);
+    border: 1px solid var(--rule-soft);
+  }
+  .fig { background: var(--surface); padding: 12px 13px 13px; }
+  .fig-v {
+    font-family: var(--cond);
+    font-weight: 700;
+    font-size: 1.62rem;
+    line-height: 1;
+    letter-spacing: -.01em;
+    font-variant-numeric: tabular-nums;
+  }
+  .fig-v.zero { color: var(--pass); }
+  .fig-k {
+    font-size: 12px;
+    line-height: 1.3;
+    color: var(--muted);
+    margin-top: 5px;
+  }
+
+  /* ---------- run order ---------- */
+
+  ol.run { list-style: none; margin: 0; padding: 0; counter-reset: beat; }
+  ol.run > li {
+    counter-increment: beat;
+    display: grid;
+    grid-template-columns: 26px 1fr;
+    gap: 12px;
+    padding: 11px 0;
+    border-bottom: 1px solid var(--rule-soft);
+  }
+  ol.run > li:last-child { border-bottom: none; padding-bottom: 0; }
+  ol.run > li::before {
+    content: counter(beat);
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--accent);
+    padding-top: 3px;
+  }
+  .cmd {
+    font-family: var(--mono);
+    font-size: 12.5px;
+    font-weight: 500;
+    background: var(--surface-sunk);
+    padding: 3px 7px;
+    display: inline-block;
+    overflow-wrap: anywhere;
+  }
+  .beat-say { font-size: 13px; color: var(--ink-2); margin-top: 6px; }
+  .beat-meta {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+
+  /* ---------- limits ---------- */
+
+  .limits {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-top: 4px solid var(--hold);
+    padding: 20px 20px 22px;
+  }
+  .limits h2 {
+    font-family: var(--cond);
+    font-weight: 700;
+    font-size: 1.18rem;
+    margin: 0 0 4px;
+  }
+  .limits .lede { font-size: 13px; color: var(--muted); margin: 0 0 16px; max-width: 74ch; }
+  .lim-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px 26px;
+  }
+  .lim h3 {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .07em;
+    text-transform: uppercase;
+    color: var(--hold);
+    margin: 0 0 5px;
+  }
+  .lim p { margin: 0; font-size: 13px; line-height: 1.45; color: var(--ink-2); }
+
+  /* ---------- addresses / footer ---------- */
+
+  .addr {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 10px 20px;
+    font-family: var(--mono);
+    font-size: 12.5px;
+  }
+  .addr div { display: flex; justify-content: space-between; gap: 12px; padding-bottom: 6px; border-bottom: 1px dotted var(--rule); }
+  .addr span:first-child { color: var(--muted); }
+  .addr span:last-child { color: var(--accent); font-weight: 500; }
+
+  footer {
+    border-top: 1px solid var(--rule);
+    padding-top: 14px;
+    font-size: 12.5px;
+    color: var(--muted);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 22px;
+    justify-content: space-between;
+  }
+  footer code { font-family: var(--mono); color: var(--ink-2); }
+
+  @media (max-width: 860px) {
+    .cols { grid-template-columns: 1fr; }
+    .ladder { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 460px) {
+    .ladder { grid-template-columns: 1fr; }
+  }
+  @media print {
+    body { background: #fff; font-size: 11px; }
+    .sheet { padding-block: 0; gap: 16px; max-width: none; }
+    .panel, .limits { break-inside: avoid; }
+  }
+</style>
+
+<div class="sheet">
+
+  <header class="masthead">
+    <div class="eyebrow">
+      <span><b>EvalSeal</b></span>
+      <span>AGI House · Enterprise Deployment Build Day</span>
+      <span>19 Sep 2026</span>
+    </div>
+    <h1>EvalSeal
+      <span class="sub">Evaluation evidence that stops transferring when something material
+        changes. Content addressing establishes identity; evidence transfer is the idea.</span>
+    </h1>
+    <p class="thesis">Evaluation evidence belongs to a configuration, not to an agent&rsquo;s name.</p>
+    <p class="thesis" style="font-size:0.95rem;font-weight:600;">Live: Claude Sonnet 5 &middot; 6/6
+      evaluation &middot; real tool-use loop &middot; evidence-transfer gate</p>
+    <p class="byline">
+      <strong>Maura Clark</strong> &middot; Kessai. Uses UOR-style structural addressing; not a UOR
+      Foundation deliverable, and no byte-compatibility claim against UOR-ADDR reference digests.
+      <strong>7,844</strong> lines of Python, <strong>174</strong> tests green. The CLI
+      demonstrations run in <strong>6.9&nbsp;s</strong>; the live agent integration adds
+      real provider calls and takes longer.
+    </p>
+  </header>
+
+  <section class="panel">
+    <h2>It works on a real agent: live against Claude Sonnet 5</h2>
+    <p class="lede">A policy-desk agent — system prompt, three MCP-shaped tools, one policy form,
+      six deterministic tasks — evaluated against <code>claude-sonnet-5</code> on 19 Sep 2026 at
+      16:34. Six of six as expected, gate PASS, six live provider calls. The harness executes tools
+      in a bounded <code>tool_use &rarr; execute &rarr; tool_result</code> loop; <strong>whether the
+      model chooses to call one is not deterministic</strong> — in this run it answered all six from
+      the policy form already in context (one call each), and in the 13:51 run it called a tool on t5
+      in a two-call sequence. The four verdicts below do not depend on either.</p>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>runtime</th><th>point identity</th><th>envelope</th><th>agent still runs</th></tr></thead>
+        <tbody>
+          <tr><td>the exact evaluated agent</td><td>VERIFIED</td>
+              <td><span class="chip keep">ADMISSIBLE</span></td><td class="num">yes</td></tr>
+          <tr><td>approved subset: one tool omitted</td><td>BLOCKED</td>
+              <td><span class="chip keep">ADMISSIBLE</span></td><td class="num">yes</td></tr>
+          <tr><td>same tool name, definition rewritten</td><td>BLOCKED</td>
+              <td><span class="chip lose">OUTSIDE (tools)</span></td><td class="num">yes</td></tr>
+          <tr class="best"><td>same agent, tool egress permitted</td><td>VERIFIED</td>
+              <td><span class="chip lose">OUTSIDE (tool_egress)</span></td><td class="num">yes</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="foot"><strong>Every agent above ran and answered.</strong> <code>agent still
+      runs</code> is derived from each observed re-run; a failed or replayed call cannot print
+      <code>yes</code>. EvalSeal does not stop inference and could not; it decides whether the earlier evaluation still covers the run. The
+      last row is the one configuration identity cannot see: nothing about the agent changed, and the
+      envelope declares the material condition <code>tool_egress: none</code>. The evaluated tool
+      implementations are local corpus operations; the envelope <em>declares</em> that condition
+      rather than proving the absence of all possible egress, and changing the presented condition
+      puts the deployment outside the envelope. (Not &ldquo;network unavailable&rdquo;: this
+      evaluation is <em>made of</em> calls to api.anthropic.com, so declaring that would be false,
+      and issuance refuses it.)
+      <strong>The LLM is the workload, never the verifier</strong> — no model is asked whether
+      evidence still applies.</p>
+    <p class="thesis" style="font-size:1.02rem;margin-top:16px;">Identity establishes the subject of
+      the evidence. The class establishes where the evidence may transfer. The envelope establishes
+      under what conditions.</p>
+    <p class="foot" style="border-top:0;padding-top:4px;"><strong>Identity tells you whether two
+      configurations differ. EvalSeal decides whether that difference matters to the
+      evidence.</strong> That is why the canonicalization work is necessary and why it is not the
+      contribution.</p>
+  </section>
+
+  <section class="panel">
+        <h2>The problem is measurable: published MCP servers rewrite tool instructions under unchanged names</h2>
+        <div class="figs">
+          <div class="fig"><div class="fig-v">63</div><div class="fig-k">consecutive published version pairs, 10 packages, 79 versions</div></div>
+          <div class="fig"><div class="fig-v zero">0</div><div class="fig-k">byte-only changes &mdash; the pre-registered falsifier fired</div></div>
+          <div class="fig"><div class="fig-v">51</div><div class="fig-k">tool descriptions rewritten under an unchanged name</div></div>
+          <div class="fig"><div class="fig-v">20<span style="font-size:1rem">/38</span></div><div class="fig-k">material changes that kept every tool name identical</div></div>
+        </div>
+        <p class="foot"><strong>Reported as a negative result.</strong> We pre-registered that byte
+          pinning would raise false alarms across real releases. It raised none here, so configuration
+          addressing cannot be justified by drift noise on this evidence &mdash; and the slide saying
+          so stays in the deck. The positive control passed (<code>@playwright/mcp</code>, 25 tools,
+          byte-only change detected), and 6 startup failures are counted rather than dropped. What the
+          sample <em>does</em> show is instruction drift under a stable name: +2,401 characters of
+          model-facing text, which a name-keyed allowlist cannot see at all.</p>
+  </section>
+
+  <section class="panel">
+    <h2>What is built: six questions, four answered</h2>
+    <p class="lede">Each question is separate, and answering one is not answering the next. Two of
+      the six are not built, which is stated here rather than blurred.</p>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>layer</th><th>the question it answers</th><th style="text-align:right">status</th></tr></thead>
+        <tbody>
+          <tr><td>configuration identity</td><td class="act">what is this configuration?</td>
+              <td class="num"><span class="chip keep">BUILT</span></td></tr>
+          <tr><td>configuration class</td><td class="act">is this configuration an admissible member?</td>
+              <td class="num"><span class="chip keep">BUILT</span></td></tr>
+          <tr><td>evidence envelope</td><td class="act">were the material conditions preserved?</td>
+              <td class="num"><span class="chip keep">BUILT</span></td></tr>
+          <tr><td>trace binding</td><td class="act">what request was sent, what response came back?</td>
+              <td class="num"><span class="chip keep">BUILT</span></td></tr>
+          <tr><td>attestation</td><td class="act">were those conditions actually true?</td>
+              <td class="num"><span class="chip none">NOT BUILT</span></td></tr>
+          <tr><td>execution</td><td class="act">is this what actually ran?</td>
+              <td class="num"><span class="chip none">NOT BUILT</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="foot"><strong>Conditions are declared, not attested.</strong> A run presenting
+      <code>tool_egress: none</code> is making a claim, exactly as an operator presenting a prompt
+      file is making one. The envelope establishes that presented conditions match the evaluated
+      ones; it does not establish that either description was true. Asked who proves the condition
+      actually held: <em>nobody, in this prototype &mdash; a sandbox or an enclave would have to
+      supply that.</em> The model is the workload, never the trust source: it never decides
+      membership, materiality, or whether its own evidence still holds.</p>
+    <p class="foot"><strong>But a declaration has three states, not two, and the third is
+      inadmissible.</strong> It can be consistent but unattested; unobserved; or
+      <em>contradicted</em> by evidence the issuer already holds. An evaluation performed by HTTPS
+      calls to a hosted model may not declare that the network was unavailable &mdash; that is not an
+      unattested condition, it is a false one. Issuance now refuses it
+      (<code>refuse_contradicted</code>, ten regression tests, one of which reads the adapter's own
+      source). This creates no attestation; it only stops the system signing what its own execution
+      path has already disproved.</p>
+      <p class="foot"><strong>Identity establishes the subject of the evidence. The class establishes
+      where the evidence may transfer. The envelope establishes under what conditions.</strong>
+      Content addressing is how identity is implemented, not what the project is about. EvalSeal stops
+      exactly where its evidence stops: attestation would establish whether the declared conditions
+      were true, execution binding whether the identified system actually participated. Neither is
+      built, and neither is claimed.</p>
+  </section>
+
+  <section class="ladder-wrap">
+    <div class="ladder">
+      <div class="rung held">
+        <span class="rung-k">LICENSED</span>
+        <span class="rung-n">DECLARED</span>
+        <span class="rung-d">Integrity of the signed declaration. The presented declaration
+          matches what the signing key signed.</span>
+      </div>
+      <div class="rung held">
+        <span class="rung-k">LICENSED</span>
+        <span class="rung-n">PRESENTED</span>
+        <span class="rung-d">Identity of the presented artifacts. These are the same tool definitions,
+          prompt and corpus documents.</span>
+      </div>
+      <div class="rung held">
+        <span class="rung-k">LICENSED</span>
+        <span class="rung-n">EVALUATED</span>
+        <span class="rung-d">An evaluation cleared <em>this</em> configuration, under a named
+          equivalence relation.</span>
+      </div>
+      <div class="rung stop">
+        <span class="rung-k">WITHHELD</span>
+        <span class="rung-n">EXECUTED</span>
+        <span class="rung-d">Not licensed. Nor the effective model, nor the approver&rsquo;s authority
+          unless the verifier anchored the key.</span>
+      </div>
+    </div>
+    <p class="ladder-note">
+      The boundary is machine-checked, not a disclaimer: <code>benchmark</code> row 7 attempts to read
+      a passing verification as proof of execution and the system returns
+      <em>insufficient evidence</em>. An unanchored signature verifies as
+      <code>VERIFIED (signer not anchored)</code> &mdash; integrity without authorship.
+    </p>
+  </section>
+
+  <section class="panel" style="background:transparent;border:0;padding:0;">
+    <h2 style="font-size:1.32rem;">Evidence behind the three claims above</h2>
+    <p class="lede" style="margin-bottom:0;">Each panel is one command anyone in the room can run.
+      They are the support, not the argument: the live gate, the MCP measurement and the six-layer
+      stack are the spine.</p>
+  </section>
+
+  <div class="cols">
+    <div class="stack">
+
+      <section class="panel">
+        <h2>The benchmark declares its expectations before it runs</h2>
+        <p class="lede">Every row states what <em>should</em> happen first; the command exits non-zero
+          if any row diverges. That is the difference between a benchmark and a screenshot.</p>
+        <div class="scroll">
+          <table>
+            <thead>
+              <tr><th></th><th>attack</th><th>action</th><th>evidence</th><th>result</th></tr>
+            </thead>
+            <tbody>
+              <tr><td class="n">1</td><td>cosmetic drift</td><td class="act">re-serialize every artifact</td>
+                  <td><span class="chip keep">PRESERVED</span></td><td class="num">pass</td></tr>
+              <tr><td class="n">2</td><td>material drift</td><td class="act">edit the system prompt</td>
+                  <td><span class="chip lose">INVALIDATED</span></td><td class="num">pass</td></tr>
+              <tr><td class="n">3</td><td>dependency drift</td><td class="act">change an MCP tool definition</td>
+                  <td><span class="chip lose">INVALIDATED</span></td><td class="num">pass</td></tr>
+              <tr><td class="n">4</td><td>irrelevant dependency</td><td class="act">add a corpus doc the evaluation never read</td>
+                  <td><span class="chip keep">PRESERVED</span></td><td class="num">pass</td></tr>
+              <tr><td class="n">5</td><td>relevant dependency</td><td class="act">change a corpus doc the evaluation read</td>
+                  <td><span class="chip lose">INVALIDATED</span></td><td class="num">pass</td></tr>
+              <tr><td class="n">6</td><td>eval contamination</td><td class="act">plant structural duplicates in the corpus
+                  <span class="why">16 structural matches; only 4 visible to byte matching</span></td>
+                  <td><span class="chip none">NOT ISSUED</span></td><td class="num">pass</td></tr>
+              <tr><td class="n">7</td><td>overclaim attempt</td><td class="act">read VERIFIED as proof of execution</td>
+                  <td><span class="chip none">INSUFFICIENT</span></td><td class="num">pass</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="foot"><strong>7/7 as declared.</strong> Rows 4 and 5 are the pair that forces the
+          design: binding the whole corpus gets 5 right and 4 wrong; binding nothing gets 4 right and
+          5 wrong. Binding the <em>resolved</em> dependency set &mdash; the documents the evaluation
+          actually read, a miss counted as a read &mdash; is the only option that gets both.</p>
+      </section>
+
+      <section class="panel">
+        <h2>Six identity functions against nine transformations</h2>
+        <p class="lede">Four cosmetic (identity must hold), five material (identity must break). A
+          false block costs a re-run; a false accept is the security failure.</p>
+        <div class="scroll">
+          <table>
+            <thead>
+              <tr><th>identity function</th><th style="text-align:right">correct</th>
+                  <th style="text-align:right">false block</th>
+                  <th style="text-align:right">false accept</th>
+                  <th style="text-align:right">refused</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>raw_bytes</td><td class="num">5/9</td><td class="num">4</td><td class="num">0</td><td class="num">0</td></tr>
+              <tr><td>naive_canonical</td><td class="num">6/9</td><td class="num">1</td><td class="num"><mark>2</mark></td><td class="num">0</td></tr>
+              <tr><td>evalseal_strict</td><td class="num">8/9</td><td class="num">1</td><td class="num">0</td><td class="num">0</td></tr>
+              <tr><td>evalseal_eval</td><td class="num">8/9</td><td class="num">0</td><td class="num"><mark>1</mark></td><td class="num">0</td></tr>
+              <tr class="best"><td>evalseal_policy</td><td class="num">9/9</td><td class="num">0</td><td class="num">0</td><td class="num">0</td></tr>
+              <tr><td>evalseal_integral_safe</td><td class="num">7/9</td><td class="num">0</td><td class="num"><mark>1</mark></td><td class="num">1</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="foot">A canonicalizer that has not declared its relation is <strong>not safer than no
+          canonicalizer</strong>: <code>naive_canonical</code> still blocks on Unicode form and also
+          false-accepts a real value change at the float64 boundary &mdash; 9,007,199,254,740,992 and
+          9,007,199,254,740,993 collapse to the same float64 value. Only the composed policy answers both numeric cases, because they
+          require opposite answers: a schema bound of <code>100</code> vs <code>100.0</code> is a
+          different contract, while <code>temperature</code> 1 vs 1.0 is not. The policy is addressed
+          and signed with the evidence, so changing it changes the evidence.</p>
+      </section>
+
+      <section class="panel">
+        <h2>Conformance: declared relation vs observed behaviour</h2>
+        <div class="figs">
+          <div class="fig"><div class="fig-v">10<span style="font-size:1rem">/12</span></div><div class="fig-k">rows informative; 2 declared vacuous, serialization-only</div></div>
+          <div class="fig"><div class="fig-v">3</div><div class="fig-k">byte false alarms on transformations declared meaning-preserving</div></div>
+        </div>
+        <p class="foot">Two rows exercise the serializer and not the canonicalizer, so they are marked
+          <strong>VACUOUS</strong> rather than counted as passes. A conformance table that scores its
+          own vacuous rows is measuring nothing and reporting 12/12.</p>
+      </section>
+
+    </div>
+
+    <div class="stack">
+
+      <section class="panel">
+        <h2>Contamination detection, with the threshold shown</h2>
+        <p class="lede">20 held-out items against a same-domain candidate corpus. Levels 1 and 2 are
+          deterministic; level 3 is lexical similarity and moves with tau.</p>
+        <div class="scroll">
+          <table>
+            <thead><tr><th>tau</th><th style="text-align:right">found</th><th style="text-align:right">false+</th><th style="text-align:right">recall</th><th style="text-align:right">precision</th></tr></thead>
+            <tbody>
+              <tr><td class="num">0.50</td><td class="num">20</td><td class="num">16</td><td class="num">100%</td><td class="num"><mark>56%</mark></td></tr>
+              <tr><td class="num">0.60</td><td class="num">20</td><td class="num">1</td><td class="num">100%</td><td class="num">95%</td></tr>
+              <tr class="best"><td class="num">0.70</td><td class="num">18</td><td class="num">0</td><td class="num">90%</td><td class="num">100%</td></tr>
+              <tr><td class="num">0.80</td><td class="num">17</td><td class="num">0</td><td class="num">85%</td><td class="num">100%</td></tr>
+              <tr><td class="num">0.90</td><td class="num">14</td><td class="num">0</td><td class="num">70%</td><td class="num">100%</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="foot"><strong>Structural matching adds 12 detections over byte matching</strong>
+          (4 &rarr; 16) with no threshold at all, which is the deterministic part of the claim. The
+          56% precision row is published because a sweep that starts where the detector looks good is
+          a screenshot. <strong>Boundary:</strong> all three levels measure corpus overlap, not
+          training exposure.</p>
+      </section>
+
+
+      <section class="panel">
+        <h2>External measurement: the reuse ladder</h2>
+        <p class="lede">A separate harness over a frozen, accession-pinned SEC EDGAR corpus (Apple,
+          Tesla). It changed this design: the corpus component used to be addressed over every
+          document present.</p>
+        <div class="scroll">
+          <table>
+            <thead><tr><th>tier</th><th style="text-align:right">valid reuse</th><th style="text-align:right">invalid reuse</th></tr></thead>
+            <tbody>
+              <tr><td>L0 request-text matching</td><td class="num">6</td><td class="num"><mark>19</mark></td></tr>
+              <tr class="best"><td>L4 certified substitution</td><td class="num">14</td><td class="num">0</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="foot">A paired comparison on identical pairs, off-surface. L3 precision degrades as
+          the relevant-dependency set expands (0.78 &rarr; 0.60 &rarr; 0.56); L4 holds across the
+          reported runs. <strong>Scope:</strong> two filing transitions on one frozen corpus. This is
+          a demonstrated mechanism, not a general safety rate.</p>
+      </section>
+
+    </div>
+  </div>
+
+
+
+  <section class="panel">
+    <h2>What an adversarial review of my own claims found, in the last hour</h2>
+    <p class="lede">Both mundane, both invisible to anything that does not check, both found before
+      the presentation rather than during it.</p>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>declared</th><th>reality</th><th>what happened</th></tr></thead>
+        <tbody>
+          <tr><td><code>temperature: 0</code> in the agent configuration</td>
+              <td class="act">the parameter is deprecated for this model</td>
+              <td class="act">every live call rejected; config corrected, address moved
+                <code>01852c2f</code> &rarr; <code>e0dcec76</code></td></tr>
+          <tr><td>the agent has three tools</td>
+              <td class="act">the harness advertised them but never executed a tool call</td>
+              <td class="act">three tasks read as failures; a bounded
+                <code>tool_use &rarr; execute &rarr; tool_result</code> loop closed it</td></tr>
+          <tr><td><code>network: unavailable</code>, signed as a <em>material</em> condition of the
+                live evaluation</td>
+              <td class="act">the evaluation is performed by HTTPS calls to api.anthropic.com</td>
+              <td class="act">a signed falsehood, and the headline row derived from it. Condition
+                replaced with the true, narrower <code>tool_egress: none</code>; contradicted
+                declarations now refused at issuance</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="scroll" style="margin-top:14px;">
+      <table>
+        <thead><tr><th>the claim</th><th>what the review showed</th></tr></thead>
+        <tbody>
+          <tr class="best"><td><strong>Evidence never transfers across a distinction the issuing
+              evidence declared material</strong></td>
+              <td class="act"><span class="chip lose">FALSIFIED</span> On the shipped envelope, with
+                no key and no tampering. <code>agent.json</code>'s description is bound by the
+                configuration address and reachable by no class rule, so rewriting it to
+                &ldquo;executes wire transfers autonomously&rdquo; gives point BLOCKED, envelope
+                ADMISSIBLE. Same shape for server-level <code>instructions</code> in
+                <code>tools.json</code>. The envelope is, for those fields, weaker than the point
+                receipt it wraps.</td></tr>
+          <tr><td>a denied operation is a different configuration from a granted one</td>
+              <td class="act"><span class="chip lose">WAS FALSE</span> <code>sorted()</code> of a
+                mapping yields its keys, so <code>{payment.transfer: false}</code> addressed
+                identically to <code>[payment.transfer]</code>. Now refused at manifest build.</td></tr>
+          <tr><td>the eval set passed its integrity check</td>
+              <td class="act"><span class="chip lose">NOT RUN</span> by <code>swarm</code>, either
+                <code>graph</code>, or the live integration &mdash; all three pass
+                <code>leakage=None</code>. Disclosed, not fixed.</td></tr>
+          <tr><td><code>tool_egress: none</code></td>
+              <td class="act">True of the tool <em>definitions</em>, which are bound. The
+                implementations are not: swap them for exfiltrating versions and the address does
+                not move. Now said on screen, not only in the docs.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="foot">None of the three divergences was adapted around. The first two the system
+      refused and named the field itself; the third an adversarial review of its own claims found, hours before the deadline, and
+      it is the most useful of the three: <strong>the thing evaluated and the thing exercised can
+      diverge in surprisingly ordinary ways &mdash; including inside the tool that exists to detect
+      that.</strong> All three, and every finding the review did not have time to fix, are published
+      in <code>KNOWN-ISSUES.md</code>.</p>
+  </section>
+
+  <section class="panel">
+    <h2>Demo running order</h2>
+    <p class="lede">Nine commands, each one a claim someone in the room could dispute. <code class="cmd">--compact</code> fits the delegation output to a 30-line
+      projected terminal without dropping an address or a number.</p>
+    <ol class="run">
+      <li>
+        <div>
+          <span class="cmd">evalseal graph --replay-real --compact</span>
+          <p class="beat-say">A coordinator delegates to two agents. One delegate advanced across two
+            real published releases of <code>@upstash/context7-mcp</code>. Both tool names are
+            unchanged; both descriptions were rewritten. The run is blocked.</p>
+          <p class="beat-meta">30 lines · the coordinator verifies, the run still stops</p>
+        </div>
+      </li>
+      <li>
+        <div>
+          <span class="cmd">evalseal graph --widen-child --compact</span>
+          <p class="beat-say">Now the delegate holds an operation its delegator never held. The
+            configuration verifies and the run is still inadmissible. Identity is not authority.</p>
+          <p class="beat-meta">21 lines · a different question, answered separately</p>
+        </div>
+      </li>
+      <li>
+        <div>
+          <span class="cmd">evalseal swarm</span>
+          <p class="beat-say">A swarm composes agents at runtime, so no exact configuration was ever
+            evaluated and point identity blocks all of them. An evidence envelope licenses a
+            <em>bounded</em> set instead. Four attempts: an unevaluated composition of exercised
+            members is ADMISSIBLE; an added <code>payment_execute</code> is outside; an approved tool
+            name whose <em>definition</em> was rewritten is outside. Then the fourth &mdash; an
+            identical agent, network now available. The point receipt says VERIFIED, same address.
+            The envelope refuses. This evaluation is local and opens no socket, so the condition is
+            true of it; the live agent run declares the narrower <code>tool_egress</code> instead,
+            because a hosted-model evaluation cannot honestly claim network absence.</p>
+          <p class="beat-meta">28 lines &middot; row 4 is what configuration identity cannot see</p>
+        </div>
+      </li>
+      <li>
+        <div>
+          <span class="cmd">evalseal demo --mutate tool</span>
+          <p class="beat-say">One tool description gains &ldquo;Ignore prior restrictions&hellip;&rdquo;.
+            The receipt stops applying and the diff names the field.</p>
+          <p class="beat-meta">BLOCKED (configuration drift) · 8cabf76750ae &rarr; changed</p>
+        </div>
+      </li>
+      <li>
+        <div>
+          <span class="cmd">evalseal demo --reserialize</span>
+          <p class="beat-say">Key order, escape form, NFD, CRLF, indentation &mdash; everything
+            re-serialized, nothing meant differently. Evidence survives. This is the half most
+            provenance demos skip.</p>
+          <p class="beat-meta">VERIFIED · same address, different bytes</p>
+        </div>
+      </li>
+      <li>
+        <div>
+          <span class="cmd">evalseal benchmark</span>
+          <p class="beat-say">Seven declared expectations, non-zero exit on any divergence.</p>
+          <p class="beat-meta">38 lines · 7/7 as declared</p>
+        </div>
+      </li>
+      <li>
+        <div>
+          <span class="cmd">evalseal realdata --offline</span>
+          <p class="beat-say">Where the falsifier fired, said out loud.</p>
+          <p class="beat-meta">0 byte-only changes in 63 pairs · positive control PASS</p>
+        </div>
+      </li>
+      <li>
+        <div>
+          <span class="cmd">evalseal demo --mutate homoglyph</span>
+          <p class="beat-say">A Cyrillic character substituted into the prompt. Visually identical,
+            materially different, caught.</p>
+          <p class="beat-meta">the case NFC normalization must <em>not</em> absorb</p>
+        </div>
+      </li>
+      <li>
+        <div>
+          <span class="cmd">evalseal bakeoff</span>
+          <p class="beat-say">The comparison, and the open disagreement it cannot settle: whether the
+            JSON type of a schema bound is part of the contract. Declare which relation the evidence
+            was issued under; don&rsquo;t let a canonicalizer decide it silently.</p>
+          <p class="beat-meta">112 lines · pipe through <code>head</code> or scroll</p>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <section class="limits">
+    <h2>What this does not do</h2>
+    <p class="lede">Every one of these is a real gap, stated here so a judge does not have to find
+      it. Two of them are the honest next quarter of work.</p>
+    <div class="lim-grid">
+      <div class="lim">
+        <h3>No enforcement point</h3>
+        <p>EvalSeal is a CLI that computes identities and verifies receipts. Nothing in a live
+          deployment is obliged to call it. The gate is real; the hook into a runtime is not built.</p>
+      </div>
+      <div class="lim">
+        <h3>Level 2 is lexical, not semantic</h3>
+        <p>Contamination detection at level 3 is character n-gram similarity. It finds paraphrase
+          shaped like the original, not paraphrase that means the same thing.</p>
+      </div>
+      <div class="lim">
+        <h3>Corpus overlap, not training exposure</h3>
+        <p>All three detectors compare an eval set to a candidate corpus. Whether a model saw an item
+          during training is a different question and is not answered here.</p>
+      </div>
+      <div class="lim">
+        <h3>Materiality policy is declared, applied narrowly</h3>
+        <p>The per-field policy is addressed and signed, and it governs the bake-off. Manifest
+          receipts still record <code>v0-implicit</code>: the policy is not yet applied when the
+          manifest is built.</p>
+      </div>
+      <div class="lim">
+        <h3>Model binding stops at the declaration</h3>
+        <p>The whole model object is bound &mdash; id, adapter, quantization, any prompt override
+          &mdash; so a swap is caught. What weights actually served a request is outside what a
+          declaration can prove.</p>
+      </div>
+      <div class="lim">
+        <h3>One frozen external corpus</h3>
+        <p>The reuse ladder is two filing transitions over pinned EDGAR accessions, and the MCP
+          sample is a convenience sample of servers startable without credentials.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Addresses printed by the run</h2>
+    <p class="lede">Relations and policies are addressed objects, so &ldquo;the same configuration&rdquo;
+      is a claim with a citation rather than a convention.</p>
+    <div class="addr">
+      <div><span>relation strict</span><span>1f9eacf7298f</span></div>
+      <div><span>relation eval</span><span>99773be65763</span></div>
+      <div><span>relation integral_safe</span><span>919c2b9ebeed</span></div>
+      <div><span>materiality policy</span><span>6523da0992de</span></div>
+      <div><span>demo configuration</span><span>8cabf76750ae</span></div>
+      <div><span>envelope (swarm)</span><span>a352a676c494</span></div>
+      <div><span>live agent config</span><span>e0dcec76ea9c</span></div>
+      <div><span>live agent envelope (16:34 run)</span><span>a2315833acef</span></div>
+      <div><span>live agent envelope (replay)</span><span>cf9d70397f04</span></div>
+    </div>
+    <p class="foot">The live envelope address moved when the false <code>network</code> condition was
+      replaced, and the live-run address differs from the replay one by design, because
+      <code>workload_provenance</code> is a recorded condition and therefore part of the envelope's
+      identity. Read it off the run, not off this card. Excluded from every configuration identity by
+      construction: <strong>the evaluation
+      result itself</strong>. If a score were part of the identity, issuing evidence would change the
+      identity the evidence is about. <code>tests/test_overclaim.py</code> pins this.</p>
+  </section>
+
+  <footer>
+    <span>Kessai &middot; configuration identity for agent deployments</span>
+    <span><code>python -m evalseal benchmark</code> &middot; exits non-zero on any divergence</span>
+  </footer>
+
+</div>
